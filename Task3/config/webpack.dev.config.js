@@ -1,9 +1,9 @@
-const common = require('./webpack.common.config');
+const common = require("./webpack.common.config");
 
 module.exports = {
   ...common,
-  devtool: 'inline-source-map',
+  devtool: "inline-source-map",
   devServer: {
-    contentBase: './dist'
+    contentBase: "./dist"
   }
 };

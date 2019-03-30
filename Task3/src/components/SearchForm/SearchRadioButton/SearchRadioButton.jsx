@@ -1,6 +1,8 @@
 import React from "react";
 
-export class RadioButton extends React.Component {
+import "./style.scss";
+
+export class SearchRadioButton extends React.Component {
   render() {
     const {
       wrapperClassName,
@@ -21,7 +23,9 @@ export class RadioButton extends React.Component {
             name={name}
             onChange={e => onChange && onChange(e.target.checked)}
           />
-          {title}
+          <div className="box">
+            <span>{title}</span>
+          </div>
         </label>
       </span>
     );

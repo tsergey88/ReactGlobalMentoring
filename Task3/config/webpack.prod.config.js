@@ -1,6 +1,6 @@
-const webpack = require('webpack');
-const Uglify = require('uglifyjs-webpack-plugin');
-const common = require('./webpack.common.config');
+const webpack = require("webpack");
+const Uglify = require("uglifyjs-webpack-plugin");
+const common = require("./webpack.common.config");
 
 module.exports = {
   ...common,

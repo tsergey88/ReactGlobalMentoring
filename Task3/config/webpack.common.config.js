@@ -1,11 +1,11 @@
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require("clean-webpack-plugin");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-module.exports =  {
+module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
-    new ExtractTextPlugin({ filename: 'style.scss.css' }),
+    new ExtractTextPlugin({ filename: "style.css" }),
     new HtmlWebpackPlugin({
       template: "./src/index.html",
       filename: "./index.html"
@@ -17,14 +17,14 @@ module.exports =  {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader'
+          loader: "babel-loader"
         }
       },
       {
         test: /\.(css|scss)$/,
         use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: ['css-loader', 'sass-loader']
+          fallback: "style-loader",
+          use: ["css-loader", "sass-loader"]
         })
       }
     ]
