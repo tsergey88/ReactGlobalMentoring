@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchInput component should be render 1`] = `
+<div
+  className="search-form"
+>
+  <div
+    className="input-group"
+  >
+    <input
+      className="search-input"
+      id="search"
+      name="search"
+      placeholder="Search"
+      type="text"
+    />
+    <div
+      className="bottom-border"
+    />
+  </div>
+</div>
+`;

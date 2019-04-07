@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "webpack-dev-server --open",
     "build": "cross-env NODE_ENV=production webpack",
-    "test": "jest",
+    "test": "jest ./src/components",
     "cypress": "cypress open",
     "lint": "eslint ./src",
     "lint-fix": "eslint ./src --fix"
@@ -15,11 +15,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "enzyme": "^3.9.0",
-    "enzyme-adapter-react-16": "^1.11.2",
-    "enzyme-to-json": "^3.3.5",
     "express": "^4.16.4",
-    "jest": "^24.5.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-redux": "^6.0.1",
@@ -41,6 +37,9 @@
     "cross-env": "^5.2.0",
     "css-loader": "^2.1.1",
     "cypress": "^3.2.0",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.11.2",
+    "enzyme-to-json": "^3.3.5",
     "eslint": "^5.12.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "^3.4.0",
@@ -54,6 +53,8 @@
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
+    "jest": "^24.6.0",
+    "jest-css-modules": "^2.0.0",
     "node-sass": "^4.11.0",
     "prettier": "^1.16.4",
     "sass-loader": "^7.1.0",
@@ -65,16 +66,38 @@
     "webpack-merge": "^4.2.1"
   },
   "jest": {
+    "verbose": true,
     "collectCoverage": true,
     "coverageReporters": [
       "json",
       "html"
     ],
+    "collectCoverageFrom": [
+      "**/*.{js,jsx}",
+      "!**/node_modules/**",
+      "!**/cypress/**"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
+      }
+    },
+    "roots": ["<rootDir>/src/components"],
     "setupFiles": [
       "<rootDir>/src/setupTests.js"
     ],
+    "modulePathIgnorePatterns": [
+      "<rootDir>/cypress/",
+      "<rootDir>/coverage/",
+      "<rootDir>/config/"
+    ],
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
-    ]
+    ],
+    "moduleNameMapper": {
+      "\\.(css|less|scss|sss|styl)$": "<rootDir>/node_modules/jest-css-modules"
+    }
   }
 }
