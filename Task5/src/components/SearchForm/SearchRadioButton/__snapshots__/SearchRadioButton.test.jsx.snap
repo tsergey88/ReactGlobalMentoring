@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchRadioButton component should be render 1`] = `
+<span>
+  <label>
+    <input
+      defaultChecked={true}
+      name="searchBy"
+      onChange={[Function]}
+      type="radio"
+    />
+    <div
+      className="box"
+    >
+      <span>
+        TITLE
+      </span>
+    </div>
+  </label>
+</span>
+`;

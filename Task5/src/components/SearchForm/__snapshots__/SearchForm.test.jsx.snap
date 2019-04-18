@@ -1,0 +1,169 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchForm component should be contain Button 1`] = `
+<div
+  className="search-form-block"
+>
+  <h3>
+    FIND YOUR MOVIE
+  </h3>
+  <SearchInput />
+  <div>
+    <div
+      className="search-form-tags"
+    >
+      <div>
+        <span>
+          SEARCH BY
+        </span>
+      </div>
+      <div>
+        <SearchRadioButton
+          defaultChecked={true}
+          id="1"
+          name="searchBy"
+          title="TITLE"
+        />
+        <SearchRadioButton
+          id="2"
+          name="searchBy"
+          title="GENRE"
+        />
+      </div>
+    </div>
+    <div
+      className="search-form-btn"
+    >
+      <Button
+        title="SEARCH"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`SearchForm component should be contain SearchInput 1`] = `
+<div
+  className="search-form-block"
+>
+  <h3>
+    FIND YOUR MOVIE
+  </h3>
+  <SearchInput />
+  <div>
+    <div
+      className="search-form-tags"
+    >
+      <div>
+        <span>
+          SEARCH BY
+        </span>
+      </div>
+      <div>
+        <SearchRadioButton
+          defaultChecked={true}
+          id="1"
+          name="searchBy"
+          title="TITLE"
+        />
+        <SearchRadioButton
+          id="2"
+          name="searchBy"
+          title="GENRE"
+        />
+      </div>
+    </div>
+    <div
+      className="search-form-btn"
+    >
+      <Button
+        title="SEARCH"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`SearchForm component should be contain SearchRadioButton 1`] = `
+<div
+  className="search-form-block"
+>
+  <h3>
+    FIND YOUR MOVIE
+  </h3>
+  <SearchInput />
+  <div>
+    <div
+      className="search-form-tags"
+    >
+      <div>
+        <span>
+          SEARCH BY
+        </span>
+      </div>
+      <div>
+        <SearchRadioButton
+          defaultChecked={true}
+          id="1"
+          name="searchBy"
+          title="TITLE"
+        />
+        <SearchRadioButton
+          id="2"
+          name="searchBy"
+          title="GENRE"
+        />
+      </div>
+    </div>
+    <div
+      className="search-form-btn"
+    >
+      <Button
+        title="SEARCH"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`SearchForm component should be render 1`] = `
+<div
+  className="search-form-block"
+>
+  <h3>
+    FIND YOUR MOVIE
+  </h3>
+  <SearchInput />
+  <div>
+    <div
+      className="search-form-tags"
+    >
+      <div>
+        <span>
+          SEARCH BY
+        </span>
+      </div>
+      <div>
+        <SearchRadioButton
+          defaultChecked={true}
+          id="1"
+          name="searchBy"
+          title="TITLE"
+        />
+        <SearchRadioButton
+          id="2"
+          name="searchBy"
+          title="GENRE"
+        />
+      </div>
+    </div>
+    <div
+      className="search-form-btn"
+    >
+      <Button
+        title="SEARCH"
+      />
+    </div>
+  </div>
+</div>
+`;

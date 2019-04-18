@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button component should be render correctly 1`] = `
+<a
+  className="btn"
+  href="javascript:void(0);"
+>
+  Title of button
+</a>
+`;
