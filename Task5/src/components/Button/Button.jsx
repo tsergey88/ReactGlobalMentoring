@@ -1,12 +1,12 @@
+// @flow
 import React from "react";
 
-export class Button extends React.Component {
-  render() {
-    const { title } = this.props;
-    return (
-      <a href="javascript:void(0);" className="btn">
-        {title}
-      </a>
-    );
-  }
-}
+type Props = {
+  title: string
+};
+
+export const Button = ({ title, ...rest }: Props) => (
+  <button className="btn" {...rest}>
+    {title}
+  </button>
+);

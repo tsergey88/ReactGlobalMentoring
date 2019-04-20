@@ -1,8 +1,14 @@
-import { FILMS_RECEIVE, FILMS_REQUEST } from "../actions/actionTypes";
+import {
+  FILMS_RECEIVE,
+  FILMS_REQUEST,
+  FILMS_CHANGE_SORTBY
+} from "../actions/actionTypes";
 
 const initialState = {
-  data: [],
-  isLoading: true
+  request: {},
+  isLoading: true,
+  sortBy: "vote_average",
+  limit: 18
 };
 
 const FilmsReducer = (state = initialState, { type, payload }) => {
@@ -16,7 +22,12 @@ const FilmsReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         isLoading: false,
-        data: payload.data
+        request: payload
+      };
+    case FILMS_CHANGE_SORTBY:
+      return {
+        ...state,
+        sortBy: payload
       };
     default:
       return state;

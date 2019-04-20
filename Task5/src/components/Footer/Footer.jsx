@@ -1,11 +1,7 @@
 import React from "react";
 
-export class Footer extends React.Component {
-  render() {
-    return (
-      <footer>
-        <div>NETFLIX ROULETTE</div>
-      </footer>
-    );
-  }
-}
+export const Footer = () => (
+  <footer>
+    <div>NETFLIX ROULETTE</div>
+  </footer>
+);

@@ -1,33 +1,36 @@
+// @flow
 import React from "react";
 
 import "./style.scss";
 
-export class SearchRadioButton extends React.Component {
-  render() {
-    const {
-      wrapperClassName,
-      className,
-      isChecked,
-      onChange,
-      name,
-      title,
-      ...rest
-    } = this.props;
-    return (
-      <span className={wrapperClassName}>
-        <label>
-          <input
-            type="radio"
-            checked={isChecked}
-            {...rest}
-            name={name}
-            onChange={e => onChange && onChange(e.target.checked)}
-          />
-          <div className="box">
-            <span>{title}</span>
-          </div>
-        </label>
-      </span>
-    );
-  }
-}
+type Props = {
+  wrapperClassName?: string,
+  isChecked?: boolean,
+  onChange?: () => {},
+  name: string,
+  title: string
+};
+
+export const SearchRadioButton = ({
+  wrapperClassName,
+  isChecked,
+  onChange,
+  name,
+  title,
+  ...rest
+}: Props) => (
+  <span className={wrapperClassName}>
+    <label>
+      <input
+        {...rest}
+        type="radio"
+        checked={isChecked}
+        name={name}
+        onChange={e => onChange && onChange(e.target.checked)}
+      />
+      <div className="box">
+        <span>{title}</span>
+      </div>
+    </label>
+  </span>
+);

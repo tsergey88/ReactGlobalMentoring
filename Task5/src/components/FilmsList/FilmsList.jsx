@@ -1,34 +1,94 @@
+// @flow
 import React from "react";
 import { connect } from "react-redux";
 
-import { fetchFilms } from "../../actions/FilmsAction";
+import { fetchFilms, changeSortBy } from "../../actions/FilmsAction";
 import { FilmPreview } from "../FilmPreview";
+import { StateLine } from "../StateLine";
+import { SearchRadioButton } from "../SearchForm/SearchRadioButton";
 
-class FilmsList extends React.Component {
+type Props = {
+  fetchFilms: () => {},
+  changeSortBy: () => {},
+  isLoading: boolean,
+  request: {},
+  limit: number,
+  sortBy: string,
+  searchBy: string,
+  search: string
+};
+
+class FilmsList extends React.Component<Props> {
   componentDidMount() {
-    this.props.fetchFilms(18);
+    this.fetch();
   }
 
+  fetch = () => {
+    const { fetchFilms, limit, sortBy, searchBy, search } = this.props;
+    fetchFilms(search, searchBy, sortBy, limit);
+  };
+
+  handleChange = currentValue => {
+    this.props.changeSortBy(currentValue);
+  };
+
+  renderPanelSortBy = () => (
+    <>
+      <div>Sort by</div>
+      <div>
+        <SearchRadioButton
+          title="release date"
+          id="1"
+          name="sortBy"
+          isChecked={this.props.sortBy === "release_date"}
+          value="release_date"
+          onChange={() => this.handleChange("release_date")}
+        />
+      </div>
+      <div className="active">
+        <SearchRadioButton
+          title="rating"
+          id="2"
+          name="sortBy"
+          isChecked={this.props.sortBy === "vote_average"}
+          value="vote_average"
+          onChange={() => this.handleChange("vote_average")}
+        />
+      </div>
+    </>
+  );
+
   render() {
-    const { data, isLoading } = this.props;
+    const { request, isLoading } = this.props;
     if (isLoading) {
-      return <div className="container">Loading...</div>;
+      return <div className="content">Loading...</div>;
+    }
+    if (!isLoading && !request.data.length) {
+      return (
+        <div className="content">
+          <h2>No Films Found</h2>
+        </div>
+      );
     }
     return (
-      <div className="container">
-        {data.map(item => (
-          <FilmPreview key={item.id} {...item} />
-        ))}
-      </div>
+      <>
+        <StateLine
+          left={`${request.total} movies found`}
+          right={this.renderPanelSortBy()}
+        />
+        <div className="content">
+          {request.data.map(item => (
+            <FilmPreview key={item.id} {...item} />
+          ))}
+        </div>
+      </>
     );
   }
 }
 
 const mapStateToProps = state => ({ ...state.FilmsReducer });
 
-const mapDispatchToProps = {
-  fetchFilms
-};
+const mapDispatchToProps = { fetchFilms, changeSortBy };
 
 export default connect(
   mapStateToProps,
