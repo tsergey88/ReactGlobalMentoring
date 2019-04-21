@@ -23,7 +23,7 @@ describe("SearchRadioButton component", () => {
   });
 
   it("should be checked", () => {
-    component.find("input").simulate("change");
+    component.find("input").simulate("change", { target: { checked: true } });
     expect(props.onChange).toHaveBeenCalled();
   });
 });

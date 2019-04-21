@@ -1,13 +1,17 @@
 import {
   FILMS_RECEIVE,
   FILMS_REQUEST,
-  FILMS_CHANGE_SORTBY
+  FILMS_CHANGE_SORTBY,
+  FILMS_CHANGE_SEARCHBY,
+  FILMS_CHANGE_SEARCH_INPUT_VALUE
 } from "../actions/actionTypes";
 
 const initialState = {
   request: {},
   isLoading: true,
   sortBy: "vote_average",
+  searchBy: "title",
+  searchValue: "",
   limit: 18
 };
 
@@ -28,6 +32,16 @@ const FilmsReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         sortBy: payload
+      };
+    case FILMS_CHANGE_SEARCHBY:
+      return {
+        ...state,
+        searchBy: payload
+      };
+    case FILMS_CHANGE_SEARCH_INPUT_VALUE:
+      return {
+        ...state,
+        searchValue: payload
       };
     default:
       return state;

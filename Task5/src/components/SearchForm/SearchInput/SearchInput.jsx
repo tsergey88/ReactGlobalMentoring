@@ -1,16 +1,25 @@
+// @flow
 import React from "react";
+import { connect } from "react-redux";
+
+import { changeSearchInputValue } from "../../../actions/FilmsAction";
 
 import "./style.scss";
 
-export class SearchInput extends React.Component {
+type Props = {
+  searchValue?: string,
+  changeSearchInputValue?: () => {}
+};
+
+export class SearchInput extends React.Component<Props> {
   state = {
-    value: ""
+    value: this.props.searchValue || ""
   };
 
   handleChange = e => {
-    e.preventDefault();
     const value = e.currentTarget.value;
     this.setState({ value });
+    this.props.changeSearchInputValue(value);
   };
 
   render() {
@@ -32,3 +41,12 @@ export class SearchInput extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => ({ ...state.FilmsReducer });
+
+const mapDispatchToProps = { changeSearchInputValue };
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SearchInput);

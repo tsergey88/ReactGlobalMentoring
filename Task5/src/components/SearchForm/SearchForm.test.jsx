@@ -1,9 +1,35 @@
 import React from "react";
-import { SearchForm } from "./SearchForm";
-import { shallow } from "enzyme";
+import { mount } from "enzyme";
+import configureStore from "redux-mock-store";
+import { Provider } from "react-redux";
+
+import SearchForm from "./SearchForm";
+
+const initialState = {
+  sortBy: "vote_average",
+  searchBy: "title",
+  searchValue: "",
+  limit: 18
+};
+
+const props = {
+  fetchFilms: jest.fn(),
+  changeSearchBy: jest.fn()
+};
+
+const mockStore = configureStore();
+let component;
+let store;
 
 describe("SearchForm component", () => {
-  const component = shallow(<SearchForm />);
+  beforeEach(() => {
+    store = mockStore(initialState);
+    component = mount(
+      <Provider store={store}>
+        <SearchForm {...initialState} {...props} />
+      </Provider>
+    );
+  });
   it("should be render", () => {
     expect(component).toMatchSnapshot();
   });

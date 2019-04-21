@@ -3,11 +3,12 @@
 exports[`MainComponent component should be render 1`] = `
 <ErrorBoundary>
   <Header>
-    <SearchForm />
+    <Component />
   </Header>
-  <div>
-    <StateLine />
-    <FilmsList />
+  <div
+    className="container"
+  >
+    <Component />
   </div>
   <Footer />
 </ErrorBoundary>

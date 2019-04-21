@@ -8,28 +8,28 @@ import { StateLine } from "../StateLine";
 import { SearchRadioButton } from "../SearchForm/SearchRadioButton";
 
 type Props = {
-  fetchFilms: () => {},
-  changeSortBy: () => {},
-  isLoading: boolean,
-  request: {},
-  limit: number,
-  sortBy: string,
-  searchBy: string,
-  search: string
+  fetchFilms?: () => {},
+  changeSortBy?: () => {},
+  isLoading?: boolean,
+  request?: {},
+  limit?: number,
+  sortBy?: string,
+  searchBy?: string,
+  searchValue?: string
 };
 
-class FilmsList extends React.Component<Props> {
+export class FilmsList extends React.Component<Props> {
   componentDidMount() {
     this.fetch();
   }
 
   fetch = () => {
-    const { fetchFilms, limit, sortBy, searchBy, search } = this.props;
-    fetchFilms(search, searchBy, sortBy, limit);
+    const { fetchFilms, limit, sortBy, searchBy, searchValue } = this.props;
+    fetchFilms(searchValue, searchBy, sortBy, limit);
   };
 
-  handleChange = currentValue => {
-    this.props.changeSortBy(currentValue);
+  handleChange = checkedValue => {
+    this.props.changeSortBy(checkedValue);
   };
 
   renderPanelSortBy = () => (

@@ -1,169 +1,154 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SearchForm component should be contain Button 1`] = `
-<div
-  className="search-form-block"
->
-  <h3>
-    FIND YOUR MOVIE
-  </h3>
-  <SearchInput />
-  <div>
-    <div
-      className="search-form-tags"
-    >
-      <div>
-        <span>
-          SEARCH BY
-        </span>
-      </div>
-      <div>
-        <SearchRadioButton
-          defaultChecked={true}
-          id="1"
-          name="searchBy"
-          title="TITLE"
-        />
-        <SearchRadioButton
-          id="2"
-          name="searchBy"
-          title="GENRE"
-        />
-      </div>
-    </div>
-    <div
-      className="search-form-btn"
-    >
-      <Button
-        title="SEARCH"
-      />
-    </div>
-  </div>
-</div>
-`;
-
-exports[`SearchForm component should be contain SearchInput 1`] = `
-<div
-  className="search-form-block"
->
-  <h3>
-    FIND YOUR MOVIE
-  </h3>
-  <SearchInput />
-  <div>
-    <div
-      className="search-form-tags"
-    >
-      <div>
-        <span>
-          SEARCH BY
-        </span>
-      </div>
-      <div>
-        <SearchRadioButton
-          defaultChecked={true}
-          id="1"
-          name="searchBy"
-          title="TITLE"
-        />
-        <SearchRadioButton
-          id="2"
-          name="searchBy"
-          title="GENRE"
-        />
-      </div>
-    </div>
-    <div
-      className="search-form-btn"
-    >
-      <Button
-        title="SEARCH"
-      />
-    </div>
-  </div>
-</div>
-`;
-
-exports[`SearchForm component should be contain SearchRadioButton 1`] = `
-<div
-  className="search-form-block"
->
-  <h3>
-    FIND YOUR MOVIE
-  </h3>
-  <SearchInput />
-  <div>
-    <div
-      className="search-form-tags"
-    >
-      <div>
-        <span>
-          SEARCH BY
-        </span>
-      </div>
-      <div>
-        <SearchRadioButton
-          defaultChecked={true}
-          id="1"
-          name="searchBy"
-          title="TITLE"
-        />
-        <SearchRadioButton
-          id="2"
-          name="searchBy"
-          title="GENRE"
-        />
-      </div>
-    </div>
-    <div
-      className="search-form-btn"
-    >
-      <Button
-        title="SEARCH"
-      />
-    </div>
-  </div>
-</div>
-`;
-
 exports[`SearchForm component should be render 1`] = `
-<div
-  className="search-form-block"
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
 >
-  <h3>
-    FIND YOUR MOVIE
-  </h3>
-  <SearchInput />
-  <div>
-    <div
-      className="search-form-tags"
+  <ConnectFunction
+    changeSearchBy={[MockFunction]}
+    fetchFilms={[MockFunction]}
+    limit={18}
+    searchBy="title"
+    searchValue=""
+    sortBy="vote_average"
+  >
+    <SearchForm
+      changeSearchBy={[Function]}
+      fetchFilms={[Function]}
+      limit={18}
+      searchBy="title"
+      searchValue=""
+      sortBy="vote_average"
     >
-      <div>
-        <span>
-          SEARCH BY
-        </span>
-      </div>
-      <div>
-        <SearchRadioButton
-          defaultChecked={true}
-          id="1"
-          name="searchBy"
-          title="TITLE"
-        />
-        <SearchRadioButton
-          id="2"
-          name="searchBy"
-          title="GENRE"
-        />
-      </div>
-    </div>
-    <div
-      className="search-form-btn"
-    >
-      <Button
-        title="SEARCH"
-      />
-    </div>
-  </div>
-</div>
+      <form
+        action="javascript:void(0)"
+        className="search-form-block"
+        onSubmit={[Function]}
+      >
+        <h3>
+          FIND YOUR MOVIE
+        </h3>
+        <ConnectFunction>
+          <SearchInput
+            changeSearchInputValue={[Function]}
+          >
+            <div
+              className="search-form"
+            >
+              <div
+                className="input-group"
+              >
+                <input
+                  className="search-input"
+                  id="search"
+                  name="search"
+                  onChange={[Function]}
+                  placeholder="Search"
+                  type="text"
+                  value=""
+                />
+                <div
+                  className="bottom-border"
+                />
+              </div>
+            </div>
+          </SearchInput>
+        </ConnectFunction>
+        <div>
+          <div
+            className="search-form-tags"
+          >
+            <div>
+              <span>
+                SEARCH BY
+              </span>
+            </div>
+            <div>
+              <SearchRadioButton
+                id="1"
+                isChecked={true}
+                name="searchBy"
+                onChange={[Function]}
+                title="TITLE"
+                value="title"
+              >
+                <span>
+                  <label>
+                    <input
+                      checked={true}
+                      id="1"
+                      name="searchBy"
+                      onChange={[Function]}
+                      type="radio"
+                      value="title"
+                    />
+                    <div
+                      className="box"
+                    >
+                      <span>
+                        TITLE
+                      </span>
+                    </div>
+                  </label>
+                </span>
+              </SearchRadioButton>
+              <SearchRadioButton
+                id="2"
+                isChecked={false}
+                name="searchBy"
+                onChange={[Function]}
+                title="GENRE"
+                value="genres"
+              >
+                <span>
+                  <label>
+                    <input
+                      checked={false}
+                      id="2"
+                      name="searchBy"
+                      onChange={[Function]}
+                      type="radio"
+                      value="genres"
+                    />
+                    <div
+                      className="box"
+                    >
+                      <span>
+                        GENRE
+                      </span>
+                    </div>
+                  </label>
+                </span>
+              </SearchRadioButton>
+            </div>
+          </div>
+          <div
+            className="search-form-btn"
+          >
+            <Button
+              title="SEARCH"
+              type="submit"
+            >
+              <button
+                className="btn"
+                type="submit"
+              >
+                SEARCH
+              </button>
+            </Button>
+          </div>
+        </div>
+      </form>
+    </SearchForm>
+  </ConnectFunction>
+</Provider>
 `;

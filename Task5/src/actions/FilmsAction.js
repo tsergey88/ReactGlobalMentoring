@@ -1,7 +1,9 @@
 import {
   FILMS_REQUEST,
   FILMS_RECEIVE,
-  FILMS_CHANGE_SORTBY
+  FILMS_CHANGE_SORTBY,
+  FILMS_CHANGE_SEARCHBY,
+  FILMS_CHANGE_SEARCH_INPUT_VALUE
 } from "./actionTypes";
 
 export const requestFilms = () => ({
@@ -13,6 +15,14 @@ export const receivedFilms = payload => ({
 });
 export const changeSortBy = payload => ({
   type: FILMS_CHANGE_SORTBY,
+  payload
+});
+export const changeSearchBy = payload => ({
+  type: FILMS_CHANGE_SEARCHBY,
+  payload
+});
+export const changeSearchInputValue = payload => ({
+  type: FILMS_CHANGE_SEARCH_INPUT_VALUE,
   payload
 });
 

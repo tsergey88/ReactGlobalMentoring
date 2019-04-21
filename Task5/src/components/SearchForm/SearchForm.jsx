@@ -2,35 +2,32 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { fetchFilms } from "../../actions/FilmsAction";
+import { fetchFilms, changeSearchBy } from "../../actions/FilmsAction";
 import { SearchRadioButton } from "./SearchRadioButton";
 import { Button } from "../Button";
 import { SearchInput } from "./SearchInput";
 
 type Props = {
   fetchFilms: () => {},
+  changeSearchBy: () => {},
   limit: number,
-  sortBy: string
+  sortBy: string,
+  searchBy: string,
+  searchValue: string
 };
 
 class SearchForm extends React.Component<Props> {
-  handleSubmit = e => {
-    e.preventDefault();
-    const data = {};
-    [...e.currentTarget].forEach(field => {
-      if (field.type === "text") {
-        data[field.name] = field.value;
-      }
-      if (field.type === "radio" && field.checked) {
-        data[field.name] = field.value;
-      }
-    });
-    const { search, searchBy } = data;
-    const { fetchFilms, sortBy, limit } = this.props;
-    fetchFilms(search, searchBy, sortBy, limit);
+  handleSubmit = () => {
+    const { fetchFilms, sortBy, limit, searchBy, searchValue } = this.props;
+    fetchFilms(searchValue, searchBy, sortBy, limit);
+  };
+
+  handleChange = checkedValue => {
+    this.props.changeSearchBy(checkedValue);
   };
 
   render() {
+    const { searchBy } = this.props;
     return (
       <form
         className="search-form-block"
@@ -49,14 +46,17 @@ class SearchForm extends React.Component<Props> {
                 title="TITLE"
                 id="1"
                 name="searchBy"
-                defaultChecked
+                isChecked={searchBy === "title"}
                 value="title"
+                onChange={() => this.handleChange("title")}
               />
               <SearchRadioButton
                 title="GENRE"
                 id="2"
                 name="searchBy"
+                isChecked={searchBy === "genres"}
                 value="genres"
+                onChange={() => this.handleChange("genres")}
               />
             </div>
           </div>
@@ -71,7 +71,7 @@ class SearchForm extends React.Component<Props> {
 
 const mapStateToProps = state => ({ ...state.FilmsReducer });
 
-const mapDispatchToProps = { fetchFilms };
+const mapDispatchToProps = { fetchFilms, changeSearchBy };
 
 export default connect(
   mapStateToProps,

@@ -11,7 +11,7 @@ describe("Button component", () => {
   });
 
   it("should contain correct tag", () => {
-    expect(component.find("a")).toHaveLength(1);
+    expect(component.find("button")).toHaveLength(1);
   });
 
   it("should contain correct title", () => {
