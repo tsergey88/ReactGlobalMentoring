@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StateLine  component should be render correctly 1`] = `
+<div
+  className="state-line"
+>
+  <div
+    className="state-line-left"
+  >
+    Left
+  </div>
+  <div
+    className="state-line-right"
+  >
+    Right
+  </div>
+</div>
+`;

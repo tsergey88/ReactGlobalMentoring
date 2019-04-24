@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainComponent component should be render 1`] = `
+<ErrorBoundary>
+  <Header>
+    <Component />
+  </Header>
+  <div
+    className="container"
+  >
+    <Component />
+  </div>
+  <Footer />
+</ErrorBoundary>
+`;
