@@ -27,7 +27,7 @@ class SearchForm extends React.Component<Props> {
       searchValue,
       history
     } = this.props;
-    history.push(`/search/${searchValue}`)
+    history.push(`/search/${searchValue}`);
     fetchFilms(searchValue, searchBy, sortBy, limit);
   };
 
