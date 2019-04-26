@@ -77,4 +77,4 @@ export const fetchFilmById = id => dispatch => {
     .catch(error => {
       console.log("An error occurred.", error);
     });
-}
+};
