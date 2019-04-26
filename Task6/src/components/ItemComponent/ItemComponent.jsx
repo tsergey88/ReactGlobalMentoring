@@ -9,7 +9,7 @@ import { ErrorBoundary } from "../ErrorBoundary";
 
 export const ItemComponent = ({ ...props }) => (
   <ErrorBoundary>
-    <Header>
+    <Header isFilmPage>
       <FilmDetails filmId={props.match.params.id} />
     </Header>
     <div className="container">

@@ -4,17 +4,33 @@ import { withRouter } from "react-router";
 import { connect } from "react-redux";
 
 import { getYear } from "../../utils";
-import { fetchFilms, changeGenres } from "../../actions/FilmsAction";
+import {
+  fetchFilms,
+  changeGenres,
+  fetchFilmById
+} from "../../actions/FilmsAction";
 
 type Props = {
+  filmData?: {
+    id: number,
+    title: string,
+    poster_path: string,
+    tagline: string,
+    release_date: string,
+    runtime: string,
+    overview: string,
+    vote_average: string,
+    genres: []
+  },
   filmId: number,
   fetchFilms?: () => {},
-  changeGenres?: () => {}
+  changeGenres?: () => {},
+  fetchFilmById?: () => {}
 };
 
 export class FilmDetails extends React.Component<Props> {
   state = {
-    data: []
+    data: {}
   };
 
   componentDidMount() {
@@ -28,13 +44,9 @@ export class FilmDetails extends React.Component<Props> {
   }
 
   init = async () => {
-    const { filmId, fetchFilms, changeGenres } = this.props;
-    const request = await fetch(
-      `https://reactjs-cdp.herokuapp.com/movies/${filmId}`
-    );
-    const data = await request.json();
-    this.setState({ data });
-    const filter = data.genres.join(", ");
+    const { filmId, fetchFilms, changeGenres, fetchFilmById } = this.props;
+    await fetchFilmById(filmId);
+    const filter = this.props.filmData.genres.join(", ");
     changeGenres(filter);
     fetchFilms({ filter });
   };
@@ -48,7 +60,10 @@ export class FilmDetails extends React.Component<Props> {
       runtime,
       overview,
       vote_average
-    } = this.state.data;
+    } = this.props.filmData;
+    if (!this.props.filmData.id) {
+      return <div>FILM NOT FOUND</div>;
+    }
     return (
       <div className="film-details">
         <div className="film-details-image-preview">
@@ -79,7 +94,7 @@ export class FilmDetails extends React.Component<Props> {
 
 const mapStateToProps = state => ({ ...state.FilmsReducer });
 
-const mapDispatchToProps = { fetchFilms, changeGenres };
+const mapDispatchToProps = { fetchFilms, changeGenres, fetchFilmById };
 
 export default withRouter(
   connect(

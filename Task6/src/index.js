@@ -28,7 +28,7 @@ render(
     <PersistGate loading={null} persistor={persistor}>
       <BrowserRouter>
         <Switch>
-          <Route exact path={"/index"} component={MainComponent} />
+          <Route exact path={"/"} component={MainComponent} />
           <Route path={"/film/:id"} component={ItemComponent} />
           <Route path={"/search/:searchQuery?"} component={MainComponent} />
           <Route component={Page404} />

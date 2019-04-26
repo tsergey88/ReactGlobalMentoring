@@ -4,7 +4,9 @@ import {
   FILMS_CHANGE_SORTBY,
   FILMS_CHANGE_SEARCHBY,
   FILMS_CHANGE_SEARCH_INPUT_VALUE,
-  FILMS_CHANGE_GENRES
+  FILMS_CHANGE_GENRES,
+  FILMS_REQUEST_BY_ID,
+  FILMS_RECEIVE_BY_ID
 } from "./actionTypes";
 
 export const requestFilms = () => ({
@@ -26,9 +28,16 @@ export const changeSearchInputValue = payload => ({
   type: FILMS_CHANGE_SEARCH_INPUT_VALUE,
   payload
 });
-
 export const changeGenres = payload => ({
   type: FILMS_CHANGE_GENRES,
+  payload
+});
+
+export const requestFilmById = () => ({
+  type: FILMS_REQUEST_BY_ID
+});
+export const receivedFilmById = payload => ({
+  type: FILMS_RECEIVE_BY_ID,
   payload
 });
 
@@ -36,7 +45,7 @@ export const fetchFilms = ({
   searchValue = "",
   searchBy = "",
   sortBy = "",
-  limit = 18,
+  limit = 24,
   filter = ""
 }) => dispatch => {
   const searchParam = searchValue && `search=${searchValue}`;
@@ -45,7 +54,7 @@ export const fetchFilms = ({
   const limitParam = limit && `limit=${limit}`;
   const filterParam = filter && `filter=${filter}`;
 
-  dispatch(requestFilms());
+  dispatch(requestFilmById());
   return fetch(
     `https://reactjs-cdp.herokuapp.com/movies?${searchParam}&${searchByParam}&${sortByParam}&${limitParam}&${filterParam}`
   )
@@ -57,3 +66,15 @@ export const fetchFilms = ({
       console.log("An error occurred.", error);
     });
 };
+
+export const fetchFilmById = id => dispatch => {
+  dispatch(requestFilms());
+  return fetch(`https://reactjs-cdp.herokuapp.com/movies/${id}`)
+    .then(response => response.json())
+    .then(data => {
+      dispatch(receivedFilmById(data));
+    })
+    .catch(error => {
+      console.log("An error occurred.", error);
+    });
+}

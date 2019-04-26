@@ -13,15 +13,22 @@ type Props = {
   limit: number,
   sortBy: string,
   searchBy: string,
-  searchValue: string
+  searchValue: string,
+  history: *
 };
 
 class SearchForm extends React.Component<Props> {
   handleSubmit = () => {
-    const { fetchFilms, sortBy, limit, searchBy, searchValue, history } = this.props;
+    const {
+      fetchFilms,
+      sortBy,
+      limit,
+      searchBy,
+      searchValue,
+      history
+    } = this.props;
     history.push(`/search/${searchValue}`)
     fetchFilms(searchValue, searchBy, sortBy, limit);
-    console.log(this.props)
   };
 
   handleChange = checkedValue => {
