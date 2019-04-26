@@ -29,10 +29,6 @@ type Props = {
 };
 
 export class FilmDetails extends React.Component<Props> {
-  state = {
-    data: {}
-  };
-
   componentDidMount() {
     this.init();
   }
