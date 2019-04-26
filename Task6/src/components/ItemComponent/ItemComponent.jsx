@@ -1,6 +1,8 @@
+// @flow
 import React from "react";
+
 import { Header } from "../Header";
-import { SearchForm } from "../SearchForm";
+import { FilmDetails } from "../FilmDetails";
 import { FilmsList } from "../FilmsList";
 import { Footer } from "../Footer";
 import { ErrorBoundary } from "../ErrorBoundary";
@@ -8,11 +10,13 @@ import { ErrorBoundary } from "../ErrorBoundary";
 export const ItemComponent = ({ ...props }) => (
   <ErrorBoundary>
     <Header>
-      <SearchForm />
+      <FilmDetails filmId={props.match.params.id} />
     </Header>
     <div className="container">
-      <FilmsList {...props} />
+      <FilmsList isFilmPage {...props} />
     </div>
     <Footer />
   </ErrorBoundary>
 );
+
+export default ItemComponent;

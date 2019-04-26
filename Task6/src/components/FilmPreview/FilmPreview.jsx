@@ -1,6 +1,7 @@
 // @flow
 import React from "react";
 import { Link } from "react-router-dom";
+import { getYear } from "../../utils";
 
 type Props = {
   title: string,
@@ -29,7 +30,7 @@ export const FilmPreview = ({
       </div>
       <div>
         <span className="item-preview-release-date">
-          {release_date.split("-")[0]}
+          {getYear(release_date)}
         </span>
       </div>
     </div>

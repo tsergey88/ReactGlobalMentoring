@@ -2,7 +2,11 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { fetchFilms, changeSortBy } from "../../actions/FilmsAction";
+import {
+  fetchFilms,
+  changeSortBy,
+  changeSearchInputValue
+} from "../../actions/FilmsAction";
 import { FilmPreview } from "../FilmPreview";
 import { StateLine } from "../StateLine";
 import { SearchRadioButton } from "../SearchForm/SearchRadioButton";
@@ -10,12 +14,16 @@ import { SearchRadioButton } from "../SearchForm/SearchRadioButton";
 type Props = {
   fetchFilms?: () => {},
   changeSortBy?: () => {},
+  changeSearchInputValue?: () => {},
   isLoading?: boolean,
   request?: {},
   limit?: number,
   sortBy?: string,
   searchBy?: string,
-  searchValue?: string
+  searchValue?: string,
+  genres?: string,
+  isFilmPage?: boolean,
+  match?: {}
 };
 
 export class FilmsList extends React.Component<Props> {
@@ -23,9 +31,27 @@ export class FilmsList extends React.Component<Props> {
     this.fetch();
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.match.params !== prevProps.match.params) {
+      this.fetch();
+    }
+  }
+
   fetch = () => {
-    const { fetchFilms, limit, sortBy, searchBy, searchValue } = this.props;
-    fetchFilms(searchValue, searchBy, sortBy, limit);
+    const {
+      fetchFilms,
+      limit,
+      sortBy,
+      searchBy,
+      searchValue,
+      match
+    } = this.props;
+    fetchFilms({
+      searchValue: match.params.searchQuery || searchValue,
+      searchBy,
+      sortBy,
+      limit
+    });
   };
 
   handleChange = checkedValue => {
@@ -59,7 +85,7 @@ export class FilmsList extends React.Component<Props> {
   );
 
   render() {
-    const { request, isLoading } = this.props;
+    const { request, isLoading, isFilmPage, genres } = this.props;
     if (isLoading) {
       return <div className="content">Loading...</div>;
     }
@@ -73,8 +99,12 @@ export class FilmsList extends React.Component<Props> {
     return (
       <>
         <StateLine
-          left={`${request.total} movies found`}
-          right={this.renderPanelSortBy()}
+          left={
+            !isFilmPage
+              ? `${request.total} movies found`
+              : `Films by genre: ${genres}`
+          }
+          right={!isFilmPage && this.renderPanelSortBy()}
         />
         <div className="content">
           {request.data.map(item => (
@@ -88,7 +118,7 @@ export class FilmsList extends React.Component<Props> {
 
 const mapStateToProps = state => ({ ...state.FilmsReducer });
 
-const mapDispatchToProps = { fetchFilms, changeSortBy };
+const mapDispatchToProps = { fetchFilms, changeSortBy, changeSearchInputValue };
 
 export default connect(
   mapStateToProps,

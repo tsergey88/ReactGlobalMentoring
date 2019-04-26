@@ -6,13 +6,13 @@ import { FilmsList } from "../FilmsList";
 import { ErrorBoundary } from "../ErrorBoundary";
 import { SearchForm } from "../SearchForm";
 
-export const MainComponent = () => (
+export const MainComponent = ({ ...props }) => (
   <ErrorBoundary>
     <Header>
-      <SearchForm />
+      <SearchForm {...props} />
     </Header>
     <div className="container">
-      <FilmsList />
+      <FilmsList {...props} />
     </div>
     <Footer />
   </ErrorBoundary>

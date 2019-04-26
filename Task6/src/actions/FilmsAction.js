@@ -3,7 +3,8 @@ import {
   FILMS_RECEIVE,
   FILMS_CHANGE_SORTBY,
   FILMS_CHANGE_SEARCHBY,
-  FILMS_CHANGE_SEARCH_INPUT_VALUE
+  FILMS_CHANGE_SEARCH_INPUT_VALUE,
+  FILMS_CHANGE_GENRES
 } from "./actionTypes";
 
 export const requestFilms = () => ({
@@ -26,20 +27,27 @@ export const changeSearchInputValue = payload => ({
   payload
 });
 
-export const fetchFilms = (
-  search = "",
+export const changeGenres = payload => ({
+  type: FILMS_CHANGE_GENRES,
+  payload
+});
+
+export const fetchFilms = ({
+  searchValue = "",
   searchBy = "",
   sortBy = "",
-  limit = 18
-) => dispatch => {
-  const searchParam = search && `search=${search}`;
+  limit = 18,
+  filter = ""
+}) => dispatch => {
+  const searchParam = searchValue && `search=${searchValue}`;
   const searchByParam = searchBy && `searchBy=${searchBy}`;
   const sortByParam = sortBy && `sortBy=${sortBy}`;
   const limitParam = limit && `limit=${limit}`;
+  const filterParam = filter && `filter=${filter}`;
 
   dispatch(requestFilms());
   return fetch(
-    `https://reactjs-cdp.herokuapp.com/movies?${searchParam}&${searchByParam}&${sortByParam}&${limitParam}`
+    `https://reactjs-cdp.herokuapp.com/movies?${searchParam}&${searchByParam}&${sortByParam}&${limitParam}&${filterParam}`
   )
     .then(response => response.json())
     .then(data => {

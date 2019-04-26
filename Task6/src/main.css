@@ -18,6 +18,10 @@ button {
 .logo {
   margin-bottom: 1em;
 }
+.logo a {
+  color: #e50914;
+  text-decoration: none;
+}
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -108,11 +112,41 @@ footer {
 }
 .state-line-right {
   display: flex;
-  justify-content: space-between;
 }
 .state-line-right div {
   margin: 0 10px;
 }
 .state-line-right .active {
   color: #d24979;
+}
+.film-details {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1em;
+}
+.film-details-image-preview {
+  min-width: 20%;
+  margin-right: 1em;
+}
+.film-details-title {
+  display: flex;
+}
+.film-details-vote {
+  margin-left: 1em;
+  padding: 5px;
+  color: yellow;
+  border: 1px solid yellow;
+  border-radius: 50%;
+}
+.film-details-year {
+  margin-top: 1em;
+  color: white;
+  font-weight: bold;
+}
+.film-details-year:first-child {
+  margin-right: 1em;
+}
+.film-details-overview {
+  margin-top: 1em;
+  color: white;
 }

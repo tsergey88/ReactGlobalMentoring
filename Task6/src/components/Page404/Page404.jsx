@@ -15,7 +15,7 @@ export const Page404 = ({ ...props }: Props) => (
         404 Error <b>Page {props.location.pathname}</b> Not Found
       </div>
       <div>
-        <Link to={"/"}>На главную</Link>
+        <Link to={"/index"}>На главную</Link>
       </div>
     </div>
     <Footer />

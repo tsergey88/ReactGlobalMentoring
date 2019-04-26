@@ -1,1 +1,1 @@
-export * from "./ItemComponent.jsx";
+export ItemComponent from "./ItemComponent.jsx";

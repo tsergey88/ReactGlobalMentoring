@@ -3,7 +3,8 @@ import {
   FILMS_REQUEST,
   FILMS_CHANGE_SORTBY,
   FILMS_CHANGE_SEARCHBY,
-  FILMS_CHANGE_SEARCH_INPUT_VALUE
+  FILMS_CHANGE_SEARCH_INPUT_VALUE,
+  FILMS_CHANGE_GENRES
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -12,7 +13,8 @@ const initialState = {
   sortBy: "vote_average",
   searchBy: "title",
   searchValue: "",
-  limit: 18
+  limit: 18,
+  genres: ""
 };
 
 const FilmsReducer = (state = initialState, { type, payload }) => {
@@ -42,6 +44,11 @@ const FilmsReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         searchValue: payload
+      };
+    case FILMS_CHANGE_GENRES:
+      return {
+        ...state,
+        genres: payload
       };
     default:
       return state;
