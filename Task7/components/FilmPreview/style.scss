@@ -1,0 +1,20 @@
+.item_preview {
+  width: 15%;
+  margin-bottom: 1em;
+  margin-right: 1em;
+
+  img {
+    cursor: pointer;
+  }
+}
+.item_preview_title {
+  display: flex;
+  justify-content: space-between;
+}
+.item_preview_release_date {
+  border: 1px solid black;
+  padding: 1px 5px;
+}
+.item_preview_genres {
+  font-size: 12px;
+}
