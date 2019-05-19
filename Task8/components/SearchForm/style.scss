@@ -1,0 +1,22 @@
+.search_form_block {
+  > div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+    color: white;
+  }
+  h3 {
+    color: white;
+    margin-bottom: 1em;
+  }
+}
+.search_form_tags {
+  display: flex;
+
+  div {
+    margin-right: 1em;
+  }
+}
+.search_form_btn {
+  display: flex;
+}

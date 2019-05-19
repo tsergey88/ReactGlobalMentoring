@@ -1,0 +1,19 @@
+.state_line {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10em;
+  font-weight: 900;
+  color: black;
+  background-color: #dddddd;
+}
+.state_line_right {
+  display: flex;
+
+  div {
+    margin: 0 10px;
+  }
+
+  .active {
+    color: #d24979;
+  }
+}

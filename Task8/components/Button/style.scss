@@ -1,0 +1,16 @@
+:local(button) {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+:local(.btn) {
+  display: block;
+  background-color: #d24979;
+  padding: 5px 15px;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
+:local(.btn:hover) {
+  color: gray;
+}

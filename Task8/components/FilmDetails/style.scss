@@ -1,0 +1,34 @@
+.film_details {
+  display: flex;
+}
+.film_details_image_preview {
+  margin-right: 3em;
+
+  img {
+    max-width: 320px;
+  }
+}
+.film_details_title {
+  display: flex;
+  margin-bottom: 1em;
+}
+.film_details_vote {
+  margin-left: 1em;
+  padding: 5px;
+  color: yellow;
+  border: 1px solid yellow;
+  border-radius: 50%;
+}
+.film_details_year {
+  margin-top: 5px;
+  color: white;
+  font-weight: bold;
+
+  :first-child {
+    margin-right: 1em;
+  }
+}
+.film_details_overview {
+  margin-top: 1em;
+  color: white;
+}
